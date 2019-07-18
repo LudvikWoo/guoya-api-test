@@ -16,7 +16,6 @@ def mkdir(path):
     is_exists = os.path.exists(path)
     if not is_exists:
         os.makedirs(path)
-get_root_path()
 
 def exists(file_or_path):
     is_exists = os.path.exists(file_or_path)
