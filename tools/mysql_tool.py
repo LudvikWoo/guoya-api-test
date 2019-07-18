@@ -3,19 +3,15 @@
 # Data ：2019/7/10 6:26
 
 import pymysql
-import tools.config_tool as config_tool
 
-
-def connect():
-    conf = config_tool.ConfigTool()
-    db_info = conf.get_db_dict('DB_GY')
-    print(type(db_info))
-    conn = pymysql.connect(**db_info)
+def connect(**db):
+    conn = pymysql.connect(**db)
     return conn
 
 
-def query_one(sql):
-    conn = connect()
+def query_one(sql,db):
+    print(type(db))
+    conn = connect(**db)
     cursor = conn.cursor(pymysql.cursors.DictCursor)
 
     try:

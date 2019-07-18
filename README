@@ -6,5 +6,5 @@ python setup.py sdist
 ## 2. 发布版本
 ```
 pip install twine
-twine upload dist/gy-api-tool-1.0.0.tar.gz
+twine upload dist/guoya-api-test-1.0.7.tar.gz
 ```

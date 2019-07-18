@@ -16,7 +16,7 @@ def get_request(url, params=None, headers=None, cookies=None):
     :return:
     """
 
-    if not url.startswith('http://'):
+    if not (url.startswith('http://') or url.startswith('https://')):
         url = '%s%s' % ('http://', url)
         print(url)
     try:
@@ -39,7 +39,7 @@ def get_request(url, params=None, headers=None, cookies=None):
 
 
 @logs
-def post_request(url, data=None, params=None, headers=None, json=None, cookies=None):
+def post_request(url, data=None,files=None, params=None, headers=None, json=None, cookies=None):
     """
     Post请求
     :param url:
@@ -47,11 +47,11 @@ def post_request(url, data=None, params=None, headers=None, json=None, cookies=N
     :param header:
     :return:
     """
-    if not url.startswith('http://'):
+    if not (url.startswith('http://') or url.startswith('https://')):
         url = '%s%s' % ('http://', url)
         print(url)
     try:
-        response = requests.post(url, data=data, params=params, headers=headers, json=json, cookies=cookies)
+        response = requests.post(url, data=data,files=files, params=params, headers=headers, json=json, cookies=cookies)
 
     except requests.RequestException as e:
         log_tool.error('%s%s' % ('RequestException url: ', url))
@@ -82,7 +82,7 @@ def post_request_multipart(url, files=None, headers=None, cookies=None):
     :param type:
     :return:
     """
-    if not url.startswith('http://'):
+    if not (url.startswith('http://') or url.startswith('https://')):
         url = '%s%s' % ('http://', url)
         print(url)
     response = requests.post(url=url, files=files, headers=headers, cookies=cookies)
@@ -94,7 +94,7 @@ def post_request_multipart(url, files=None, headers=None, cookies=None):
 
 
 @logs
-def put_request(url, data, header, cookies=None):
+def put_request(url, data, header=None, cookies=None):
     """
     Put请求
     :param url:
@@ -102,7 +102,7 @@ def put_request(url, data, header, cookies=None):
     :param header:
     :return:
     """
-    if not url.startswith('http://'):
+    if not (url.startswith('http://') or url.startswith('https://')):
         url = '%s%s' % ('http://', url)
         log_tool.debug(url)
 
@@ -126,3 +126,4 @@ def put_request(url, data, header, cookies=None):
     log_tool.info('----请求用时: %s 秒数' % time_consuming)
 
     return response
+
