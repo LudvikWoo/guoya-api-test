@@ -1,56 +1,43 @@
 # -*- coding:utf-8 -*-
 # Author : 小吴老师
 # Data ：2019/7/18 18:29
-import os
+from tools import os_tool
+from tools import excel_tool
 
-def get_root_path():
-    root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)).replace('\\', '/')
-    print(root_path.find('venv'))
-    if root_path.find('venv') > 0:
-        root_path=root_path[:root_path.find('venv')-1]
-    return root_path+'/'
 
-def mkdir(path):
-    is_exists = os.path.exists(path)
-    if not is_exists:
-        os.makedirs(path)
-
-def exists(file_or_path):
-    is_exists = os.path.exists(file_or_path)
-    return is_exists
 ############################
 # 初始化工程目录
 ############################
 def init_dirs():
     # 工程根目录
-    root_path = get_root_path()
+    root_path = os_tool.get_root_path()
 
     # 配置文件夹
-    mkdir(root_path + 'config')
+    os_tool.mkdir(root_path + 'config')
 
     # 测试用例文件夹
     test_case = root_path + 'test_case'
-    mkdir(test_case)
-    mkdir((test_case + '/demo'))
+    os_tool.mkdir(test_case)
+    os_tool.mkdir((test_case + '/demo'))
 
     # 测试数据文件夹
-    mkdir(root_path + 'data')
+    os_tool.mkdir(root_path + 'data')
 
     # allure报告文件夹
     reports = root_path + 'reports'
-    mkdir(reports + '/xml')
-    mkdir(reports + '/html')
+    os_tool.mkdir(reports + '/xml')
+    os_tool.mkdir(reports + '/html')
 
     # 日志文件夹
-    mkdir(root_path+'logs')
+    os_tool.mkdir(root_path + 'logs')
 
 
 #####################
 # 初始化config包
 #####################
 def init_config():
-    config = get_root_path()+'config'
-    mkdir(config)
+    config = os_tool.get_root_path() + 'config'
+    os_tool.mkdir(config)
     conf = "GY_API_URL = 'http://dev.guoyasoft.com:8080'\n\n" \
            "GY_DB_URL = {                               \n" \
            "    'host': 'qa.guoyasoft.com',             \n" \
@@ -63,11 +50,12 @@ def init_config():
     with open(config + '/conf.py', 'w', encoding='utf-8') as f:
         f.write(conf)
 
+
 ###################
 # 新建run.py脚本
 ###################
 def ini_run():
-    root_path = get_root_path()
+    root_path = os_tool.get_root_path()
     run = "# -*- coding:utf-8 -*-																		\n" \
           "# Author : 小吴老师                                                                        \n" \
           "# Data ：2019/7/12 7:41                                                                    \n" \
@@ -91,16 +79,17 @@ def ini_run():
           "    shell_tool.invoke(cmd1)                                                                \n" \
           "    shell_tool.invoke(cmd2)                                                              \n"
 
-    if not exists(root_path + '/run.py'):
+    if not os_tool.exists(root_path + '/run.py'):
         with open(root_path + '/run.py', 'w', encoding='utf-8') as f:
             f.write(run)
+
 
 #############################
 # xml配置category和
 #############################
 def ini_allure():
-    reports_xml=get_root_path()+'reports/xml'
-    mkdir(reports_xml)
+    reports_xml = os_tool.get_root_path() + 'reports/xml'
+    os_tool.mkdir(reports_xml)
     category = '[{                                                    \n' \
                '        "name": "Ignored tests",                      \n' \
                '        "matchedStatuses": ["skipped"]                \n' \
@@ -125,7 +114,7 @@ def ini_allure():
                '    }                                                 \n' \
                ']                                                     \n'
 
-    if not exists(reports_xml + '/categories.json'):
+    if not os_tool.exists(reports_xml + '/categories.json'):
         with open(reports_xml + '/categories.json', 'w', encoding='utf-8') as f:
             f.write(category)
 
@@ -133,7 +122,7 @@ def ini_allure():
                   'Browser.Version=63.0   \n' \
                   'Stand=Production       \n'
 
-    if not exists(reports_xml + '/environment.properties'):
+    if not os_tool.exists(reports_xml + '/environment.properties'):
         with open(reports_xml + '/environment.properties', 'w', encoding='utf-8') as f:
             f.write(environment)
 
@@ -142,8 +131,8 @@ def ini_allure():
 # test_hello.py
 #############################
 def init_test_demo():
-    test_case = get_root_path()+'test_case'
-    mkdir(test_case)
+    test_case = os_tool.get_root_path() + 'test_case'
+    os_tool.mkdir(test_case)
     test_hello = "# -*- coding:utf-8 -*-                                                                                        \n" \
                  "# Author : 小吴老师                                                                                           \n" \
                  "# Data ：2019/7/18 19:23                                                                                      \n" \
@@ -172,18 +161,62 @@ def init_test_demo():
                  "    }                                                                                                         \n" \
                  "    allure.attach(json.dumps(response,ensure_ascii=False,indent=4), '响应', allure.attachment_type.TEXT)      \n"
 
-    mkdir('__init__.py')
-    demo = test_case+'/demo'
-    mkdir(demo)
-    if not os.path.exists(demo + '/test_hello.py'):
+    os_tool.mkdir('__init__.py')
+    demo = test_case + '/demo'
+    os_tool.mkdir(demo)
+    if not os_tool.exists(demo + '/test_hello.py'):
         with open(demo + '/test_hello.py', 'w', encoding='utf-8') as f:
             f.write(test_hello)
+
+
+#######################################
+# 全局文件conftest.py
+######################################
+def init_conftest():
+    conftest = "import pytest                                               \n" \
+               "                                                            \n" \
+               "                                                            \n" \
+               "@pytest.fixture(scope='session')                            \n" \
+               "def pub_dic():                                              \n" \
+               "    data = {'token':'asdfasdfjsldkfjlsxllkj'}               \n" \
+               "    return data                                             \n" \
+               "                                                            \n" \
+               "                                                            \n" \
+               "@pytest.fixture(scope='session')                            \n" \
+               "def pub_list():                                             \n" \
+               "    data = ['张三','zhangsan',30,'男','aaa123']             \n" \
+               "    return data                                             \n" \
+               "                                                            \n" \
+               "                                                            \n" \
+               "@pytest.fixture(scope='session')                            \n" \
+               "def pub_var():                                              \n" \
+               "    token = 'xxxxsdfsdfjkllwklewe'                          \n" \
+               "    return token                                            \n"
+    file_path = os_tool.get_root_path() + 'test_case'
+    if not os_tool.exists(file_path + '/conftest.py'):
+        with open(file_path + '/conftest.py', 'w', encoding='utf-8') as f:
+            f.write(conftest)
+
+
+#######################################
+# 初始化测试数据
+#######################################
+def init_data():
+    file_path = os_tool.get_root_path() + 'data/demo'
+    os_tool.mkdir(file_path)
+    file_name = file_path + '/excel_demo.xlsx'
+
+    data_title = ['test_case', 'i_user_name', 'i_pwd', 'o_code', 'o_token']
+    data_list = [['登陆成功', 'guoya2019', 'aaa123', 2000, None], ['用户名不存在', 'guoya2016', 'aaa123', 9999, None],
+                 ['密码错误', 'guoya2019', 'aaa000', 9999, None]]
+    excel_tool.write_excel(file_name, data_title=data_title, data_list=data_list)
+
 
 #######################################
 # 初始化.gitignore
 ######################################
 def init_git():
-    root_path = get_root_path()
+    root_path = os_tool.get_root_path()
     gitignore = '# pycharm                                                                                     \n' \
                 '.idea/                                                                                        \n' \
                 '# Byte-compiled / optimized / DLL files                                                       \n' \
@@ -291,9 +324,10 @@ def init_git():
                 '# mypy                                                                                        \n' \
                 '.mypy_cache/                                                                                  \n'
 
-    if not exists(root_path + '/.gitignore'):
+    if not os_tool.exists(root_path + '/.gitignore'):
         with open(root_path + '/.gitignore', 'w', encoding='utf-8') as f:
             f.write(gitignore)
+
 
 def init_project():
     #########################################
@@ -307,6 +341,10 @@ def init_project():
     ini_allure()
     # 初始化演示demo
     init_test_demo()
+    # 初始化excel模板
+    init_data()
+    # 初始化conftest
+    init_conftest()
     # 初始化run.py
     ini_run()
     # 初始化git

@@ -7,7 +7,7 @@ from distutils.core import setup
 
 setup(
     name="guoya-api-test",  # 这里是pip项目发布的名称
-    version="1.0.7",  # 版本号，数值大的会优先被pip
+    version="1.1.8",  # 版本号，数值大的会优先被pip
     keywords=["api", "tools"],
     description="to simplify api auto test",
     long_description="A tools package,to simplify develope api auto test",
@@ -52,6 +52,7 @@ setup(
         'wcwidth==0.1.7',
         'webencodings==0.5.1',
         'xlrd==1.2.0',
+        'xlwt==1.3.0',
         'zipp==0.5.2'
     ]
 )

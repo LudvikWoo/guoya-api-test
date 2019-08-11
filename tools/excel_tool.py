@@ -1,6 +1,25 @@
 import xlrd
+import xlwt
 from tools import os_tool
 
+def write_excel(file_name,data_title,data_list,encoding='utf-8'):
+    # 创建workbook和sheet对象 注意Workbook的开头W要大写
+    workbook = xlwt.Workbook(encoding=encoding)
+    # 添加一个名为sheet1的表
+    sheet1 = workbook.add_sheet('sheet1', cell_overwrite_ok=True)
+
+    # 向表头写入数据
+    for i in range(len(data_title)):
+        sheet1.write(0, i, data_title[i])
+
+    # 向sheet写入数据
+    for i in range(len(data_list)):
+        for j in range(4):
+            sheet1.write(i + 1, j, data_list[i][j])
+
+    # 保存数据到‘Workbook2.xls’文件中
+    workbook.save(file_name)
+    print('创建execel完成！')
 
 def _get_excel_dict(file):
     data = []

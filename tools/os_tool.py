@@ -7,6 +7,7 @@ import os
 
 def get_root_path():
     root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)).replace('\\', '/')
+    print(root_path)
     print(root_path.find('venv'))
     if root_path.find('venv') > 0:
         root_path=root_path[:root_path.find('venv')-1]
