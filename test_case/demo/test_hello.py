@@ -8,7 +8,8 @@ import json
 @allure.epic('一级归类')                                                                                      
 @allure.feature('二级归类')                                                                                   
 @allure.story('三级归类')                                                                                     
-def test_hello_world():                                                                                       
+def test_hello_world():
+    allure.attach('http://localhost:8080/demo/login.action', '地址', allure.attachment_type.TEXT)
     print('hello world !')                                                                                    
     request = {                                                                                               
         'pwd': 'a123456',                                                                                     

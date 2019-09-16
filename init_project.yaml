@@ -1,0 +1,11 @@
+dirs:
+  - config
+  - data
+  - logs
+  - reports
+  - test_case
+  - tools
+files:
+  - .gitignore
+  - run.py
+  - README.md

@@ -1,0 +1,16 @@
+[ {
+  "values" : [ "Production" ],
+  "name" : "Stand"
+}, {
+  "values" : [ "ÎâÁî" ],
+  "name" : "Tester"
+}, {
+  "values" : [ "QA" ],
+  "name" : "»·¾³"
+}, {
+  "values" : [ "63.0   " ],
+  "name" : "Browser.Version"
+}, {
+  "values" : [ "Chrome         " ],
+  "name" : "Browser"
+} ]

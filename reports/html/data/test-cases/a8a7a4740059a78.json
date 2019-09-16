@@ -1,0 +1,84 @@
+{
+  "uid" : "a8a7a4740059a78",
+  "name" : "test_hello_world",
+  "fullName" : "test_case.demo.test_hello#test_hello_world",
+  "historyId" : "34e797c210bfeac1259b9362e4ab6d9d",
+  "time" : {
+    "start" : 1568603431036,
+    "stop" : 1568603431037,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "dbcc3af21d0aa338",
+      "name" : "请求",
+      "source" : "dbcc3af21d0aa338.txt",
+      "type" : "text/plain",
+      "size" : 49
+    }, {
+      "uid" : "f808a83d3d52341c",
+      "name" : "响应",
+      "source" : "f808a83d3d52341c.txt",
+      "type" : "text/plain",
+      "size" : 197
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 0,
+    "attachmentsCount" : 2,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "feature",
+    "value" : "二级归类"
+  }, {
+    "name" : "epic",
+    "value" : "一级归类"
+  }, {
+    "name" : "story",
+    "value" : "三级归类"
+  }, {
+    "name" : "parentSuite",
+    "value" : "test_case.demo"
+  }, {
+    "name" : "suite",
+    "value" : "test_hello"
+  }, {
+    "name" : "subSuite"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-9VDV5RHB"
+  }, {
+    "name" : "thread",
+    "value" : "5548-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "test_case.demo.test_hello"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "a8a7a4740059a78.json",
+  "parameterValues" : [ ]
+}

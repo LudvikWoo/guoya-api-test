@@ -1,0 +1,11 @@
+[ {
+  "uid" : "a804fc2cabaa0dc8",
+  "name" : "test_hello_world",
+  "time" : {
+    "start" : 1568603540546,
+    "stop" : 1568603540548,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

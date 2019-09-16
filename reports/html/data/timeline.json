@@ -1,0 +1,43 @@
+{
+  "uid" : "ab17fc5a4eb3bca4b216b548c7f9fcbc",
+  "name" : "timeline",
+  "children" : [ {
+    "name" : "LAPTOP-9VDV5RHB",
+    "children" : [ {
+      "name" : "2240-MainThread",
+      "children" : [ {
+        "name" : "test_hello_world",
+        "uid" : "a804fc2cabaa0dc8",
+        "parentUid" : "121c98fd088e5c3a6160c187f5fd2947",
+        "status" : "passed",
+        "time" : {
+          "start" : 1568603540546,
+          "stop" : 1568603540548,
+          "duration" : 2
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "121c98fd088e5c3a6160c187f5fd2947"
+    }, {
+      "name" : "5548-MainThread",
+      "children" : [ {
+        "name" : "test_hello_world",
+        "uid" : "a8a7a4740059a78",
+        "parentUid" : "3418e26cec57285b6295d0bfbb8c21e1",
+        "status" : "passed",
+        "time" : {
+          "start" : 1568603431036,
+          "stop" : 1568603431037,
+          "duration" : 1
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "3418e26cec57285b6295d0bfbb8c21e1"
+    } ],
+    "uid" : "fe5e1c74b51c5da1dba030489e069224"
+  } ]
+}
